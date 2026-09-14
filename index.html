@@ -1,33 +1,74 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="th">
 <head>
-<meta charset="utf-8">
-<title>tiger</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tiger</title>
 
 <style>
-body {
+* {
+    box-sizing: border-box;
+}
+
+html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
     background-color: #5BFFFC;
-    background-image: url("site/Depositphotos_31914607_XL-scaled.jpg");
+    background-image: url("Depositphotos_31914607_XL-scaled.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    font-family: Arial, sans-serif;
 }
 
-figure {
-    margin: 20px auto;
-    width: 90%;
-}
-
-figure img {
-    display: block;
+/* ส่วนหัว */
+.header {
     width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    display: block;
 }
 
-figcaption {
-    text-align: center;
+/* ส่วนเนื้อหา */
+.content {
+    width: 90%;
+    max-width: 1600px;
+    margin: 25px auto;
+}
+
+/* รูปภาพ */
+.content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 25px auto;
+}
+
+/* วิดีโอ */
+.video {
+    width: 90%;
+    max-width: 1600px;
+    height: 800px;
+    display: block;
+    margin: 30px auto;
+    border: none;
+}
+
+/* มือถือ */
+@media (max-width: 768px) {
+
+    .content {
+        width: 95%;
+    }
+
+    .video {
+        width: 95%;
+        height: 500px;
+    }
 }
 </style>
 
@@ -35,46 +76,39 @@ figcaption {
 
 <body>
 
-<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-<tbody>
-<tr>
-<td bgcolor="#0EA5D7">
+<!-- ==================== HEADER ==================== -->
 
-<img 
-src="site/ChatGPT Image 10 ก.ย. 2569 12_32_23.png"
-width="100%"
-alt="ภาพส่วนหัว">
+<img
+    class="header"
+    src="ChatGPT%20Image%2010%20%E0%B8%81.%E0%B8%A2.%202569%2012_32_23.png"
+    alt="ภาพส่วนหัว">
 
-</td>
-</tr>
-</tbody>
-</table>
 
-<figure>
+<!-- ==================== CONTENT ==================== -->
 
-<img 
-src="site/ChatGPT Image 10 ก.ย. 2569 15_36_16.png"
-alt="ภาพที่ 1">
+<div class="content">
 
-<img 
-src="site/ChatGPT Image 10 ก.ย. 2569 15_41_40.png"
-alt="ภาพที่ 2">
+    <img
+        src="ChatGPT%20Image%2010%20%E0%B8%81.%E0%B8%A2.%202569%2015_36_16.png"
+        alt="ภาพเนื้อหาที่ 1">
 
-<figcaption>T</figcaption>
+    <img
+        src="ChatGPT%20Image%2010%20%E0%B8%81.%E0%B8%A2.%202569%2015_41_40.png"
+        alt="ภาพเนื้อหาที่ 2">
 
-</figure>
+</div>
 
-<div>Content for New div Tag Goes Here</div>
+
+<!-- ==================== FACEBOOK VIDEO ==================== -->
 
 <iframe
-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F920264739972452%2F"
-width="100%"
-height="800"
-style="border:none;overflow:hidden"
-scrolling="no"
-frameborder="0"
-allowfullscreen="true">
+    class="video"
+    src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F920264739972452%2F"
+    scrolling="no"
+    frameborder="0"
+    allowfullscreen="true">
 </iframe>
+
 
 </body>
 </html>
