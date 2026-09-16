@@ -23,24 +23,67 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    font-family: Arial, sans-serif;
+    font-family: Arial, "Tahoma", sans-serif;
 }
 
-/* ส่วนหัว */
+/* ==================== ส่วนหัว ==================== */
+
 .header {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* ส่วนเนื้อหา */
+
+/* ==================== วันและเวลาปัจจุบัน ==================== */
+
+.datetime {
+    width: 90%;
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 25px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.90);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.20);
+}
+
+.datetime-title {
+    margin: 0 0 15px 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+}
+
+#date {
+    font-size: 26px;
+    font-weight: bold;
+    color: #444;
+}
+
+#time {
+    margin-top: 10px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #1565C0;
+    letter-spacing: 3px;
+}
+
+
+/* ==================== ส่วนเนื้อหา ==================== */
+
 .content {
     width: 90%;
     max-width: 1600px;
     margin: 25px auto;
 }
 
-/* รูปภาพ */
+
+/* ==================== รูปภาพ ==================== */
+
 .content img {
     width: 100%;
     height: auto;
@@ -48,7 +91,9 @@ body {
     margin: 0 auto 25px auto;
 }
 
-/* วิดีโอ */
+
+/* ==================== วิดีโอ ==================== */
+
 .video {
     width: 90%;
     max-width: 1600px;
@@ -58,11 +103,30 @@ body {
     border: none;
 }
 
-/* มือถือ */
+
+/* ==================== มือถือ ==================== */
+
 @media (max-width: 768px) {
 
     .content {
         width: 95%;
+    }
+
+    .datetime {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .datetime-title {
+        font-size: 23px;
+    }
+
+    #date {
+        font-size: 20px;
+    }
+
+    #time {
+        font-size: 42px;
     }
 
     .video {
@@ -76,12 +140,32 @@ body {
 
 <body>
 
+
 <!-- ==================== HEADER ==================== -->
 
 <img
     class="header"
     src="ChatGPT%20Image%2010%20%E0%B8%81.%E0%B8%A2.%202569%2012_32_23.png"
     alt="ภาพส่วนหัว">
+
+
+<!-- ==================== วันและเวลาปัจจุบัน ==================== -->
+
+<div class="datetime">
+
+    <div class="datetime-title">
+        📅 วันและเวลาปัจจุบัน
+    </div>
+
+    <div id="date">
+        กำลังโหลดวันที่...
+    </div>
+
+    <div id="time">
+        00:00:00
+    </div>
+
+</div>
 
 
 <!-- ==================== CONTENT ==================== -->
@@ -110,46 +194,15 @@ body {
 </iframe>
 
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<title>วันและเวลาปัจจุบัน</title>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 100px;
-        background: #f2f2f2;
-    }
-
-    #date {
-        font-size: 32px;
-        font-weight: bold;
-    }
-
-    #time {
-        font-size: 60px;
-        font-weight: bold;
-        margin-top: 15px;
-    }
-</style>
-</head>
-
-<body>
-
-<h1>วันและเวลาปัจจุบัน</h1>
-
-<div id="date"></div>
-<div id="time"></div>
+<!-- ==================== ระบบวันและเวลา ==================== -->
 
 <script>
+
 function updateDateTime() {
+
     const now = new Date();
 
+    /* ชื่อวัน */
     const days = [
         "วันอาทิตย์",
         "วันจันทร์",
@@ -160,25 +213,50 @@ function updateDateTime() {
         "วันเสาร์"
     ];
 
+    /* ชื่อเดือน */
+    const months = [
+        "มกราคม",
+        "กุมภาพันธ์",
+        "มีนาคม",
+        "เมษายน",
+        "พฤษภาคม",
+        "มิถุนายน",
+        "กรกฎาคม",
+        "สิงหาคม",
+        "กันยายน",
+        "ตุลาคม",
+        "พฤศจิกายน",
+        "ธันวาคม"
+    ];
+
     const day = days[now.getDay()];
     const date = now.getDate();
-    const month = now.getMonth() + 1;
+    const month = months[now.getMonth()];
     const year = now.getFullYear() + 543;
 
+    /* ชั่วโมง นาที วินาที */
     const hours = String(now.getHours()).padStart(2, "0");
     const minutes = String(now.getMinutes()).padStart(2, "0");
     const seconds = String(now.getSeconds()).padStart(2, "0");
 
+    /* แสดงวันที่ */
     document.getElementById("date").textContent =
-        `${day}ที่ ${date}/${month}/${year}`;
+        `${day}ที่ ${date} ${month} พ.ศ. ${year}`;
 
+    /* แสดงเวลา */
     document.getElementById("time").textContent =
         `${hours}:${minutes}:${seconds}`;
 }
 
+
+/* เรียกใช้ทันที */
 updateDateTime();
+
+/* อัปเดตทุก 1 วินาที */
 setInterval(updateDateTime, 1000);
+
 </script>
+
 
 </body>
 </html>
